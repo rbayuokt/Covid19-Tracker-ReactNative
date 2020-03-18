@@ -3,12 +3,19 @@ Adalah aplikasi untuk memonitoring data penyebaran virus covid-19 di seluruh dun
 dibuat menggunakan react native dan API yang dibuat oleh mas [@mathroid](https://github.com/mathdroid/covid-19-api) :thumbsup:
 makasih mas untuk API nya.
 
-dibuat menggunakan **React Native**
+# Tools
+- [x] React Native
+- [x] Visual Code
+- [x] Android Emulator
 
 # Fitur
 - [x] Pull To Refresh
 - [x] Load then show ( atau loading dulu baru nampil data wkwk )
 - [x] Fitur lainnya menyusul...
+
+# Library yang digunakan
+- [x] React Native Dropdown [link](https://www.npmjs.com/package/react-native-material-dropdown)
+- [x] WHC Lading [link](https://github.com/netyouli/react-native-whc-loading)
 
 # Screenshoot 
 
