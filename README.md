@@ -16,6 +16,8 @@ makasih mas untuk API nya.
 # Library yang digunakan
 - [x] React Native Dropdown [link](https://www.npmjs.com/package/react-native-material-dropdown)
 - [x] WHC Loading [link](https://github.com/netyouli/react-native-whc-loading)
+- [x] Pull To Refresh
+- [x] Axios
 
 # Screenshoot 
 
