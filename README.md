@@ -36,6 +36,6 @@ makasih mas untuk API nya.
 **Error Screen :**<br><br>
 <img src="screenshoot/error handle.jpg" width="300px" /><br>
 
-made with :heart: in Cimahi by [@rbayuokt](https://www.instagram.com/rbayuokt/) :thumbsup:
-kalau mau dibuild ulang jangan lupa cantumkan sumbernya , karena mencantumkan sumber bisa membuat orang lain merasa bahagia :thumbsup:
+made with :heart: in Cimahi by [@rbayuokt](https://www.instagram.com/rbayuokt/) :thumbsup:<br>
+kalau mau dibuild ulang jangan lupa cantumkan sumbernya<br>karena mencantumkan sumber bisa membuat orang lain merasa bahagia :thumbsup:
 goodluck have fun! 
