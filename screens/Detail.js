@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, Animated, Image, Dimensions, ScrollView, TouchableOpacity } from 'react-native'
-import PTRView from 'react-native-pull-to-refresh';
+import { Text, StyleSheet, View, Animated, Image, Dimensions, ScrollView, TouchableOpacity ,BackHandler , ToastAndroid} from 'react-native'
+import PTRView from 'react-native-pull-to-refresh/index';
 import moment from "moment";
 import Loading from 'react-native-whc-loading'
 
@@ -46,7 +46,23 @@ class Detail extends React.Component{
         });
     }
 
+
+    //back button
+    handleBackButton() {
+        // const { route , navigation } = this.props;
+        // this.navigation.navigate('Home');
+        ToastAndroid.show('Selalu Cuci Tanganmu', ToastAndroid.SHORT);
+
+        return true;
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+    }
+
     componentDidMount(){
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+
         const { params } = this.props.route;
         const pilneg = params ? params.pilneg : null;
         var negara = pilneg;

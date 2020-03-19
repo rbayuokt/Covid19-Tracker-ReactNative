@@ -1,22 +1,17 @@
 {
   "expo": {
     "name": "Corona Tracker",
+    "description" : "Aplikasi tracker covid-19",
     "slug": "CoronaTracker",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+    "icon": "./assets/images/bacteria.png",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -24,7 +19,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rbayuokt.coronatracker",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.rbayuokt.coronatracker",
+      "versionCode": 1
     }
   }
 }

@@ -4,6 +4,7 @@ import { Dropdown } from 'react-native-material-dropdown';
 import PTRView from 'react-native-pull-to-refresh';
 import axios from 'axios';
 import { BackHandler } from 'react-native';
+console.disableYellowBox = true;
 
 //import tema
 import * as theme from '../Theme';
@@ -25,12 +26,14 @@ class Home extends React.Component {
             data_negara : {},
             drop_negara : [],
             negarana : "",
+            default : "Indonesia"
         };
     }
 
     _refresh = () => {
         return new Promise((resolve) => {
             this.componentDidMount();
+            this.setState({default: "Indonesia"});
             setTimeout(()=>{resolve()}, 1000)
         });
     }
@@ -108,13 +111,14 @@ class Home extends React.Component {
 
 
     renderLokasi = () => {
-        const { route , navigation } = this.props;
+        // const { route , navigation } = this.props;
         return(
             <View style={styles.card}>
                 <Text style={styles.title}>Pilih Negara</Text>
 
                 <View style={styles.rapih}>
                     <Dropdown
+                        value= {this.state.default}
                         baseColor = {theme.colors.putih}
                         itemTextStyle={{color:"#FFF" , fontSize : 18 , padding: 12 ,fontFamily: 'poppins'}}
                         itemColor = {theme.colors.hitam}
@@ -125,7 +129,7 @@ class Home extends React.Component {
                         data = {this.state.drop_negara}
                         onChangeText = { value => this.onChangeHandler(value)}
                     />
-                    <TouchableHighlight underlayColor='#1F746A' style={styles.btnHijau} onPress={() => navigation.navigate('Detail' , { pilneg : this.state.negarana }) }>
+                    <TouchableHighlight underlayColor='#1F746A' style={styles.btnHijau} onPress={() => this.props.navigation.navigate('Detail' , { pilneg : (this.state.negarana == "") ? 'Indonesia' : this.state.negarana }) }>
                         <Text style={styles.btnHijauText}>CEK</Text>
                     </TouchableHighlight>
                 </View>
@@ -142,7 +146,7 @@ class Home extends React.Component {
 
         return(
             <PTRView onRefresh={this._refresh} style={styles.container}>
-                <View>
+                <View style={{flex:1}}>
                     <Text style={styles.title}>Status Global</Text>
                     {/* <Button onPress={() => navigation.navigate('Detail')} title="wow"/> */}
                     {this.renderStatusGlobal()}
@@ -156,14 +160,17 @@ class Home extends React.Component {
 
 const styles = StyleSheet.create({
     container:{
+        backgroundColor: theme.colors.background,
         flex: 1,
-        backgroundColor: theme.colors.background
+        flexDirection: 'column'
     },
     rapih:{
+        height: height / 2.7,
         marginLeft: theme.padding.kiri,
         marginRight: theme.padding.kanan,
         fontFamily: 'poppins',
-        fontSize: 18
+        fontSize: 18,
+        backgroundColor: theme.colors.background_secondary
     },
     title:{
         fontSize: theme.ukuran.besar,
@@ -175,6 +182,7 @@ const styles = StyleSheet.create({
         marginTop: 25,
     },
     status:{
+        flex:1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingLeft: theme.padding.kiri,
