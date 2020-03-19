@@ -24,7 +24,7 @@
     },
     "android": {
       "package": "com.rbayuokt.coronatracker",
-      "versionCode": 1
+      "versionCode": 2
     }
   }
 }
