@@ -111,6 +111,7 @@ class Indonesia extends React.Component{
                         <Text style={styles.textDescMerah}>Meninggal : 29</Text>
                     </View>
                 </View>
+                
             </View>
         )
     }
