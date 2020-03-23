@@ -24,8 +24,8 @@ makasih mas untuk API nya.
 **Splash Screen :**<br><br>
 <img src="screenshoot/splash.jpg" width="300px" /><br>
 
-**Home Screen :**<br><br>
-<img src="screenshoot/tampilan.jpg" width="300px" /><br>
+**Updated to v 1.2**<br><br>
+<img src="screenshoot/tampilan2.png" width="300px" /><br>
 
 **Home Screen :**<br><br>
 <img src="screenshoot/tampilan.jpg" width="300px" /><br>
