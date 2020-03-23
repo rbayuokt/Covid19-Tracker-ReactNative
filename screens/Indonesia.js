@@ -62,7 +62,7 @@ class Indonesia extends React.Component{
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                     <Text style={styles.title}>Kasus Baru</Text>
                     <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('Indonesia')}>
-                        <Text style={{color:'#fff',marginTop:45,marginRight:theme.padding.kanan}}>detail</Text>
+                        <Text style={{color:'#fff',marginTop:35,marginRight:theme.padding.kanan}}>detail</Text>
                     </TouchableHighlight>
                 </View>
 
@@ -96,7 +96,7 @@ class Indonesia extends React.Component{
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                     <Text style={styles.title}>Data Provinsi</Text>
                     <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('Indonesia')}>
-                        <Text style={{color:'#fff',marginTop:45,marginRight:theme.padding.kanan}}>detail</Text>
+                        <Text style={{color:'#fff',marginTop:35,marginRight:theme.padding.kanan}}>detail</Text>
                     </TouchableHighlight>
                 </View>
 
@@ -121,7 +121,7 @@ class Indonesia extends React.Component{
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                     <Text style={styles.title}>Update Harian</Text>
                     <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('Indonesia')}>
-                        <Text style={{color:'#fff',marginTop:45,marginRight:theme.padding.kanan}}>detail</Text>
+                        <Text style={{color:'#fff',marginTop:35,marginRight:theme.padding.kanan}}>detail</Text>
                     </TouchableHighlight>
                 </View>
 
