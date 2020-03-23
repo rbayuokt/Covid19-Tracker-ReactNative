@@ -25,10 +25,10 @@ makasih mas untuk API nya.
 <img src="screenshoot/splash.jpg" width="300px" /><br>
 
 **Home Screen :**<br><br>
-<img src="screenshoot/tampilan.jpg" width="300px" /><br>
+<img src="screenshoot/tampilan.jpg" width="300px" />
 
 **Updated to v 1.2**
-<img src="screenshoot/tampilan2.jpg" width="300px" /><br>
+<img src="screenshoot/tampilan2.png" width="300px" /><br>
 
 **Home Screen :**<br><br>
 <img src="screenshoot/tampilan.jpg" width="300px" /><br>
