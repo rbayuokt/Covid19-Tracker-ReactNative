@@ -50,7 +50,9 @@ class Indonesia extends React.Component{
         axios.get('https://indonesia-covid-19.mathdro.id/api/kasus')
         .then(res=>{
             const data_kasus = res.data.nodes;
+
             this.setState({kasus_baru : data_kasus });
+            console.log(this.state.kasus_baru)
         })
     }
 
@@ -60,22 +62,29 @@ class Indonesia extends React.Component{
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                     <Text style={styles.title}>Kasus Baru</Text>
                     <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('Indonesia')}>
-                        <Text style={{color:'#fff',marginTop:32,marginRight:theme.padding.kanan}}>detail</Text>
+                        <Text style={{color:'#fff',marginTop:45,marginRight:theme.padding.kanan}}>detail</Text>
                     </TouchableHighlight>
                 </View>
 
-                <View style={styles.kartuItem}>
-                    <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
-                        <Text style={styles.headerKartu}>Jawa Tengah</Text>
-                        <Text style={styles.statusPasienD}>Dalam Perawatan</Text>
-                    </View>
+                {/* { */}
+                    {/* this.state.kasus_baru.map((kasus)=>{ */}
+                    {/* return( */}
+                            <View style={styles.kartuItem}>
+                                <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
+                                    <Text style={styles.headerKartu}>Jawa Tengah</Text>
+                                    <Text style={styles.statusPasienD}>Dalam Perawatan</Text>
+                                </View>
 
-                    <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
-                        <Text style={styles.textDesc}>Umur : 37</Text>
-                        <Text style={styles.textDesc}>Gender : Perempuan</Text>
-                        <Text style={styles.textDesc}>WNI</Text>
-                    </View>
-                </View>
+                                <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
+                                    <Text style={styles.textDesc}>Umur : 37</Text>
+                                    <Text style={styles.textDesc}>Gender : Perempuan</Text>
+                                    <Text style={styles.textDesc}>WNI</Text>
+                                </View>
+                            </View>
+                        {/* )
+                    }) 
+                } */}
+                
                 
             </View>
         )
@@ -83,11 +92,11 @@ class Indonesia extends React.Component{
 
     renderDataProvinsi = () => {
         return(
-            <View>
+            <View style={{marginTop:20}}>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                     <Text style={styles.title}>Data Provinsi</Text>
                     <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('Indonesia')}>
-                        <Text style={{color:'#fff',marginTop:32,marginRight:theme.padding.kanan}}>detail</Text>
+                        <Text style={{color:'#fff',marginTop:45,marginRight:theme.padding.kanan}}>detail</Text>
                     </TouchableHighlight>
                 </View>
 
@@ -108,11 +117,11 @@ class Indonesia extends React.Component{
 
     renderDataHarian = () => {
         return(
-            <View>
+            <View style={{marginTop:20,marginBottom:40}}>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                     <Text style={styles.title}>Update Harian</Text>
                     <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('Indonesia')}>
-                        <Text style={{color:'#fff',marginTop:32,marginRight:theme.padding.kanan}}>detail</Text>
+                        <Text style={{color:'#fff',marginTop:45,marginRight:theme.padding.kanan}}>detail</Text>
                     </TouchableHighlight>
                 </View>
 
@@ -171,7 +180,7 @@ const styles = StyleSheet.create({
         opacity: 0.87,
         paddingLeft: theme.padding.kiri,
         paddingRight: theme.padding.kanan,
-        marginTop: 35,
+        marginTop: 25,
     },
     kartuItem:{
         marginTop: 10,

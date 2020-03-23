@@ -327,7 +327,7 @@ const styles = StyleSheet.create({
     },
     textKuning:{
         color: theme.colors.kuning,
-        fontSize: 14,
+        fontSize: 12,
         fontFamily: "poppins",
         marginTop: -5
     },
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
     },
     textHijau:{
         color: theme.colors.hijau,
-        fontSize: 14,
+        fontSize: 12,
         fontFamily: "poppins",
         marginTop: -5
     },
@@ -349,7 +349,7 @@ const styles = StyleSheet.create({
     },
     textBiru:{
         color: theme.colors.biru,
-        fontSize: 14,
+        fontSize: 12,
         fontFamily: "poppins",
         marginTop: -5
     },
@@ -360,7 +360,7 @@ const styles = StyleSheet.create({
     },
     textMerah:{
         color: theme.colors.merah,
-        fontSize: 14,
+        fontSize: 12,
         fontFamily: "poppins",
         marginTop: -5
     },
