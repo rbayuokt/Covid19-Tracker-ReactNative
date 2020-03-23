@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from "../screens/Home";
 import Detail from "../screens/Detail";
 import Splash from "../screens/Splash";
+import Indonesia from "../screens/Indonesia";
 
 //import tema
 import * as theme from '../Theme';
@@ -65,6 +66,20 @@ function Corona(route) {
             }
           })}
           />
+
+        <Stack.Screen 
+            name="Indonesia" 
+            component={Indonesia}
+            options={{
+                title: 'Indonesia Status',
+                headerTitleAlign: 'center',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+            }}
+            />
+
+          
 
       </Stack.Navigator>
     </NavigationContainer>

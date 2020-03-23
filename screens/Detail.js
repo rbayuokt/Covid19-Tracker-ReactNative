@@ -66,49 +66,69 @@ class Detail extends React.Component{
         const { params } = this.props.route;
         const pilneg = params ? params.pilneg : null;
         var negara = pilneg;
-        var url = "https://covid19.mathdro.id/api/countries/"+negara;
 
-        //tampilkan loading
-        this.refs.loading.show(this.state.isLoading);
+        if(pilneg == "Indonesia" || pilneg == "indonesia"){
+            var url = "https://indonesia-covid-19.mathdro.id/api";
 
-        axios.get(url)
-        .then(res=>{
+            axios.get(url)
+            .then(res => {
                 const datana = res.data;
-
-                this.setState({
+                this.setState({ 
                     detail_negara : datana,
-                    isLoading: false
+                    isLoading: false,
+                    negaranya : pilneg
                 });
 
+                this.refs.loading.show(this.state.isLoading);
+                
+            })
+            
+        }else{
+            var url = "https://covid19.mathdro.id/api/countries/"+negara;
+
+            //tampilkan loading
+            this.refs.loading.show(this.state.isLoading);
+    
+            axios.get(url)
+            .then(res=>{
+                    const datana = res.data;
+    
+                    this.setState({
+                        detail_negara : datana,
+                        isLoading: false
+                    });
+    
+                    //update state loading
+                    this.refs.loading.show(this.state.isLoading);
+    
+                    // console.log(this.state.detail_negara);
+                    // console.log(negara);
+                    // console.log(url);
+                    // console.log(this.state.isError);
+            })
+            .catch(err=>{
+    
+                this.setState({
+                    isError : true, 
+                    negaranya : negara,
+                    isLoading: false,
+                });
+    
                 //update state loading
                 this.refs.loading.show(this.state.isLoading);
-
-                // console.log(this.state.detail_negara);
-                // console.log(negara);
-                // console.log(url);
+    
+                // console.log("error");
                 // console.log(this.state.isError);
-        })
-        .catch(err=>{
-
-            this.setState({
-                isError : true, 
-                negaranya : negara,
-                isLoading: false,
-            });
-
-            //update state loading
-            this.refs.loading.show(this.state.isLoading);
-
-            // console.log("error");
-            // console.log(this.state.isError);
-        })
+            })
+        }
+        
     }
 
     render(){
         const isOk = this.state.isError;
 
-        if(this.state.isError == false){
-        return (
+        if(this.state.negaranya == "Indonesia" || this.state.negaranya == "indonesia"){
+            return(
             <PTRView onRefresh={this._refresh} style={styles.container}>
                 <Loading ref="loading"/>
                 <View>
@@ -119,7 +139,7 @@ class Detail extends React.Component{
                         <View style={styles.kartuKuning} >
                             <View>
                                 <Text style={styles.labelDesc}>Terinfeksi</Text>
-                                <Text style={styles.labelCount}>{format(this.state.detail_negara.confirmed != undefined ? this.state.detail_negara.confirmed.value : "")}</Text>
+                                <Text style={styles.labelCount}>{format(this.state.detail_negara.jumlahKasus != undefined ? this.state.detail_negara.jumlahKasus : "")}</Text>
                             </View>
                             <Image source={require('../assets/images/masker.png')} style={styles.icn} />
                         </View>
@@ -127,7 +147,7 @@ class Detail extends React.Component{
                         <View style={styles.kartuHijau} >
                             <View>
                                 <Text style={styles.labelDesc}>Sembuh</Text>
-                                <Text style={styles.labelCount}>{format(this.state.detail_negara.recovered != undefined ? this.state.detail_negara.recovered.value : "")}</Text>
+                                <Text style={styles.labelCount}>{format(this.state.detail_negara.sembuh != undefined ? this.state.detail_negara.sembuh : "")}</Text>
                             </View>
                             <Image source={require('../assets/images/sembuh.png')} style={styles.icn} />
                         </View>
@@ -135,24 +155,64 @@ class Detail extends React.Component{
                         <View style={styles.kartuMerah} >
                             <View>
                                 <Text style={styles.labelDesc}>Meninggal</Text>
-                                <Text style={styles.labelCount}>{format(this.state.detail_negara.deaths != undefined ? this.state.detail_negara.deaths.value : "")}</Text>
+                                <Text style={styles.labelCount}>{format(this.state.detail_negara.meninggal != undefined ? this.state.detail_negara.meninggal : "")}</Text>
                             </View>
                             <Image source={require('../assets/images/mati.png')} style={styles.icn} />
                         </View>
                     </View>
                 </View>
             </PTRView>
-        )
-    }else{
-        return(
-            <View style={styles.containerErr}>
-                <Loading ref="loading"/>
-                <Image source={require('../assets/images/bacteria.png')} style={styles.icnErr} />
-                <Text style={styles.errorTitle}>{this.state.negaranya}</Text>
-                <Text style={styles.errorSubTitle}>Tidak Terdaftar Pada JHU Database</Text>
-            </View>
-        )
-    }
+            )
+        }else{
+            if(this.state.isError == false){
+                return (
+                    <PTRView onRefresh={this._refresh} style={styles.container}>
+                        <Loading ref="loading"/>
+                        <View>
+                            <Text style={styles.title}>Last Update</Text>
+                            <Text style={styles.subtitle}>{moment(Date(this.state.detail_negara.lastUpdate)).format('DD - MMMM - YYYY')}</Text>
+        
+                            <View style={styles.rapih}>
+                                <View style={styles.kartuKuning} >
+                                    <View>
+                                        <Text style={styles.labelDesc}>Terinfeksi</Text>
+                                        <Text style={styles.labelCount}>{format(this.state.detail_negara.confirmed != undefined ? this.state.detail_negara.confirmed.value : "")}</Text>
+                                    </View>
+                                    <Image source={require('../assets/images/masker.png')} style={styles.icn} />
+                                </View>
+        
+                                <View style={styles.kartuHijau} >
+                                    <View>
+                                        <Text style={styles.labelDesc}>Sembuh</Text>
+                                        <Text style={styles.labelCount}>{format(this.state.detail_negara.recovered != undefined ? this.state.detail_negara.recovered.value : "")}</Text>
+                                    </View>
+                                    <Image source={require('../assets/images/sembuh.png')} style={styles.icn} />
+                                </View>
+        
+                                <View style={styles.kartuMerah} >
+                                    <View>
+                                        <Text style={styles.labelDesc}>Meninggal</Text>
+                                        <Text style={styles.labelCount}>{format(this.state.detail_negara.deaths != undefined ? this.state.detail_negara.deaths.value : "")}</Text>
+                                    </View>
+                                    <Image source={require('../assets/images/mati.png')} style={styles.icn} />
+                                </View>
+                            </View>
+                        </View>
+                    </PTRView>
+                )
+            }else{
+                return(
+                    <View style={styles.containerErr}>
+                        <Loading ref="loading"/>
+                        <Image source={require('../assets/images/bacteria.png')} style={styles.icnErr} />
+                        <Text style={styles.errorTitle}>{this.state.negaranya}</Text>
+                        <Text style={styles.errorSubTitle}>Tidak Terdaftar Pada JHU Database</Text>
+                    </View>
+                )
+            }
+        }
+        
+
     }
 }
 

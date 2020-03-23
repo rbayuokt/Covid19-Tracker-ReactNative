@@ -26,7 +26,8 @@ class Home extends React.Component {
             data_negara : {},
             drop_negara : [],
             negarana : "",
-            default : "Indonesia"
+            default : "Indonesia",
+            stat_idn : {}
         };
     }
 
@@ -50,6 +51,8 @@ class Home extends React.Component {
 
     componentDidMount(){
         BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+
+        //get all negara
         axios.get('https://covid19.mathdro.id/api')
         .then(res=>{
             const datana = res.data;
@@ -57,6 +60,7 @@ class Home extends React.Component {
             //console.log(this.state.data_global);
         })
 
+        //get all negara untuk dropdown
         axios.get('https://covid19.mathdro.id/api/countries/')
         .then(res=>{
             const data_negarana = res.data.countries;
@@ -73,6 +77,14 @@ class Home extends React.Component {
             }
             this.setState({drop_negara: tempNegara});
         })
+
+        //get all status indo
+        axios.get('https://indonesia-covid-19.mathdro.id/api')
+        .then(res=>{
+            const datana = res.data;
+            this.setState({stat_idn : datana});
+        })
+
     }
 
     renderStatusGlobal = () => {
@@ -142,6 +154,47 @@ class Home extends React.Component {
         console.log(this.state.negarana);
       }
 
+    renderIndonesia = () => {
+        return(
+            <View>
+                <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+                    <Text style={styles.title2}>Indonesia Status</Text>
+                    <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('Indonesia')}>
+                        <Text style={{color:'#fff',marginTop:37,marginRight:theme.padding.kanan}}>detail</Text>
+                    </TouchableHighlight>
+                </View>
+
+                <View style={{flex:1,flexDirection:'row',justifyContent:'space-between',marginLeft:theme.padding.kiri,marginRight:theme.padding.kanan,marginTop:20}}>               
+                    <View style={{alignItems:'center'}}>
+                        <Text style={styles.textKuningBold}>{format(this.state.stat_idn.jumlahKasus != undefined ? this.state.stat_idn.jumlahKasus : "")}</Text>
+                        <Text style={styles.textKuning}>Terinfeksi</Text>
+                    </View>
+
+                    <View style={{width: 2, height:height/15,backgroundColor:'#FFF',opacity:0.87}}></View>
+
+                    <View style={{alignItems:'center'}}>
+                        <Text style={styles.textHijauBold}>{format(this.state.stat_idn.sembuh != undefined ? this.state.stat_idn.sembuh : "")}</Text>
+                        <Text style={styles.textHijau}>Sembuh</Text>
+                    </View>
+
+                    <View style={{width: 2, height:height/15,backgroundColor:'#FFF',opacity:0.87}}></View>
+
+                    <View style={{alignItems:'center'}}>
+                        <Text style={styles.textBiruBold}>{format(this.state.stat_idn.perawatan != undefined ? this.state.stat_idn.perawatan : "")}</Text>
+                        <Text style={styles.textBiru}>Dirawat</Text>
+                    </View>
+
+                    <View style={{width: 2, height:height/15,backgroundColor:'#FFF',opacity:0.87}}></View>
+
+                    <View style={{alignItems:'center'}}>
+                        <Text style={styles.textMerahBold}>{format(this.state.stat_idn.meninggal != undefined ? this.state.stat_idn.meninggal : "")}    </Text>
+                        <Text style={styles.textMerah}>Meninggal</Text>
+                    </View>
+                </View>
+            </View>
+        )
+    }
+
     render(){
 
         return(
@@ -150,6 +203,7 @@ class Home extends React.Component {
                     <Text style={styles.title}>Status Global</Text>
                     {/* <Button onPress={() => navigation.navigate('Detail')} title="wow"/> */}
                     {this.renderStatusGlobal()}
+                    {this.renderIndonesia()}
                     {this.renderLokasi()}
                 </View>
             </PTRView>
@@ -165,7 +219,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column'
     },
     rapih:{
-        height: height / 2.7,
+        height: height / 3.7,
         marginLeft: theme.padding.kiri,
         marginRight: theme.padding.kanan,
         fontFamily: 'poppins',
@@ -180,6 +234,15 @@ const styles = StyleSheet.create({
         paddingLeft: theme.padding.kiri,
         paddingRight: theme.padding.kanan,
         marginTop: 25,
+    },
+    title2:{
+        fontSize: theme.ukuran.besar,
+        color: theme.colors.putih,
+        fontFamily: 'poppins-bold',
+        opacity: 0.87,
+        paddingLeft: theme.padding.kiri,
+        paddingRight: theme.padding.kanan,
+        marginTop: 30,
     },
     status:{
         flex:1,
@@ -256,7 +319,51 @@ const styles = StyleSheet.create({
         marginTop: 30,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30
-    }
+    },
+    textKuningBold:{
+        color: theme.colors.kuning,
+        fontSize: 16,
+        fontFamily: "poppins-bold"
+    },
+    textKuning:{
+        color: theme.colors.kuning,
+        fontSize: 14,
+        fontFamily: "poppins",
+        marginTop: -5
+    },
+    textHijauBold:{
+        color: theme.colors.hijau,
+        fontSize: 16,
+        fontFamily: "poppins-bold"
+    },
+    textHijau:{
+        color: theme.colors.hijau,
+        fontSize: 14,
+        fontFamily: "poppins",
+        marginTop: -5
+    },
+    textBiruBold:{
+        color: theme.colors.biru,
+        fontSize: 16,
+        fontFamily: "poppins-bold"
+    },
+    textBiru:{
+        color: theme.colors.biru,
+        fontSize: 14,
+        fontFamily: "poppins",
+        marginTop: -5
+    },
+    textMerahBold:{
+        color: theme.colors.merah,
+        fontSize: 16,
+        fontFamily: "poppins-bold"
+    },
+    textMerah:{
+        color: theme.colors.merah,
+        fontSize: 14,
+        fontFamily: "poppins",
+        marginTop: -5
+    },
 
 
 })

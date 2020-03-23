@@ -5,7 +5,8 @@
     merah: '#F66353',
     kuning: '#F2B900',
     putih: '#FFFFFF',
-    hitam: '#000000'
+    hitam: '#000000',
+    biru : '#28E6FC',
   };
 
   const padding = {
