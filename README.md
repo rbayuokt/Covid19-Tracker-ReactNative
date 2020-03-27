@@ -24,11 +24,11 @@ makasih mas untuk API nya.
 **Splash Screen :**<br><br>
 <img src="screenshoot/splash.jpg" width="300px" /><br>
 
-**Updated to v 1.2**<br><br>
+**Home Screen Updated to v 1.2**<br><br>
 <img src="screenshoot/tampilan2.png" width="300px" /><br>
 
-**Home Screen :**<br><br>
-<img src="screenshoot/tampilan.jpg" width="300px" /><br>
+**Indonesia Status Screen :**<br><br>
+<img src="screenshoot/Indonesia status.png" width="300px" /><br>
 
 **Result Screen :**<br><br>
 <img src="screenshoot/result.jpg" width="300px" /><br>
