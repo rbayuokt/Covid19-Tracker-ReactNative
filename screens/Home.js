@@ -72,10 +72,11 @@ class Home extends React.Component {
             for(var i=0 ; i < hitung ; i++){
                 //jadiin format dropdown
                 tempNegara.push({
-                    value : Object.keys(this.state.data_negara)[i]
+                    value : data_negarana[i].name
                 })
             }
             this.setState({drop_negara: tempNegara});
+            console.log(tempNegara);
         })
 
         //get all status indo
