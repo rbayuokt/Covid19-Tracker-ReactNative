@@ -76,7 +76,7 @@ class Home extends React.Component {
                 })
             }
             this.setState({drop_negara: tempNegara});
-            console.log(tempNegara);
+            // console.log(tempNegara);
         })
 
         //get all status indo

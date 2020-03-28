@@ -32,6 +32,8 @@ class Indonesia extends React.Component{
         super(props);
         this.state = {
             kasus_baru: [],
+            data_provinsi: [],
+            data_harian: [],
             isError : false,
             isLoading : true,
         };
@@ -46,17 +48,39 @@ class Indonesia extends React.Component{
     }
 
     componentDidMount(){
+        //show loading        
+        this.refs.loading.show(this.state.isLoading);
+
         //get all negara untuk dropdown
         axios.get('https://indonesia-covid-19.mathdro.id/api/kasus')
         .then(res=>{
-            const data_kasus = res.data.nodes;
-
+            const data_kasus = res.data.data.nodes;
             this.setState({kasus_baru : data_kasus });
-            console.log(this.state.kasus_baru)
         })
+
+        //get all provinsi 
+        axios.get('https://indonesia-covid-19.mathdro.id/api/provinsi')
+        .then(res => {
+            const prov = res.data.data;
+            this.setState({data_provinsi : prov});
+        });
+
+        //get all data harian
+        axios.get('https://indonesia-covid-19.mathdro.id//api/harian')
+        .then(res => {
+            const harian = res.data.data;
+            this.setState({data_harian : harian, isLoading : false});
+            
+            //remove loading
+            this.refs.loading.show(this.state.isLoading);
+        });
+
+        
     }
 
     renderKasusBaru = () => {
+        var panjang_k = this.state.kasus_baru.length;
+
         return(
             <View>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
@@ -66,25 +90,25 @@ class Indonesia extends React.Component{
                     </TouchableHighlight>
                 </View>
 
-                {/* { */}
-                    {/* this.state.kasus_baru.map((kasus)=>{ */}
-                    {/* return( */}
+                 {  
+                    //get 3 last data
+                    this.state.kasus_baru.slice(panjang_k-3,panjang_k).reverse().map((kasus)=>{
+                    return(
                             <View style={styles.kartuItem}>
                                 <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
-                                    <Text style={styles.headerKartu}>Jawa Tengah</Text>
-                                    <Text style={styles.statusPasienD}>Dalam Perawatan</Text>
+                                    <Text style={styles.headerKartu}>{kasus.klaster}</Text>
+                                    <Text style={styles.statusPasienD}>{kasus.status}</Text>
                                 </View>
 
                                 <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
-                                    <Text style={styles.textDesc}>Umur : 37</Text>
-                                    <Text style={styles.textDesc}>Gender : Perempuan</Text>
-                                    <Text style={styles.textDesc}>WNI</Text>
+                                    <Text style={styles.textDesc}>Umur : {kasus.umur}</Text>
+                                    <Text style={styles.textDesc}>Gender : {kasus.gender}</Text>
+                                    <Text style={styles.textDesc}>{kasus.wn}</Text>
                                 </View>
                             </View>
-                        {/* )
+                        )
                     }) 
-                } */}
-                
+                }
                 
             </View>
         )
@@ -100,23 +124,32 @@ class Indonesia extends React.Component{
                     </TouchableHighlight>
                 </View>
 
-                <View style={styles.kartuItem}>
-                    <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
-                        <Text style={styles.headerKartu}>Provinsi DKI Jakarta</Text>
-                    </View>
+                {
+                    this.state.data_provinsi.slice(0,3).map((prov) => {
 
-                    <View style={{flexDirection: 'row' , justifyContent:'flex-start'}}>
-                        <Text style={styles.textDescKuning}>Positif : 353</Text>
-                        <Text style={styles.textDescHijau}>Sembuh : 23</Text>
-                        <Text style={styles.textDescMerah}>Meninggal : 29</Text>
-                    </View>
-                </View>
-                
+                    return(
+                        <View style={styles.kartuItem}>
+                            <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
+                                <Text style={styles.headerKartu}>{prov.provinsi}</Text>
+                            </View>
+
+                            <View style={{flexDirection: 'row' , justifyContent:'flex-start'}}>
+                                <Text style={styles.textDescKuning}>Positif : {prov.kasusPosi}</Text>
+                                <Text style={styles.textDescHijau}>Sembuh : {prov.kasusSemb}</Text>
+                                <Text style={styles.textDescMerah}>Meninggal : {prov.kasusMeni}</Text>
+                            </View>
+                        </View>
+                    )
+                })
+            }
+
             </View>
         )
     }
 
     renderDataHarian = () => {
+        var panjang_h = this.state.data_harian.length;
+
         return(
             <View style={{marginTop:20,marginBottom:40}}>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
@@ -126,22 +159,28 @@ class Indonesia extends React.Component{
                     </TouchableHighlight>
                 </View>
 
-                <View style={styles.kartuItem}>
-                    <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
-                        <Text style={styles.headerKartu}>Hari ke 22</Text>
-                    </View>
+                { 
+                    this.state.data_harian.slice(panjang_h-3,panjang_h).reverse().map((hari) =>{
+                        return(  
+                            <View style={styles.kartuItem}>
+                                <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
+                                    <Text style={styles.headerKartu}>Hari ke {hari.harike}</Text>
+                                </View>
 
-                    <View style={{flexDirection: 'row' , justifyContent:'flex-start'}}>
-                        <View style={{paddingRight:30}}>
-                            <Text style={styles.textDescKuning}>Pasien Baru : 65</Text>
-                            <Text style={styles.textDescBiru}>Pasien Dirawat : 500</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.textDescHijau}>Pasien Sembuh : 30</Text>
-                            <Text style={styles.textDescMerah}>Pasien Meninggal : 49</Text>
-                        </View>
-                    </View>
-                </View>
+                                <View style={{flexDirection: 'row' , justifyContent:'flex-start'}}>
+                                    <View style={{paddingRight:30}}>
+                                        <Text style={styles.textDescKuning}>Pasien Baru : { (hari.jumlahKasusBaruperHari != null) ? hari.jumlahKasusBaruperHari : '-' }</Text>
+                                        <Text style={styles.textDescBiru}>Pasien Dirawat : { (hari.jumlahKasusDirawatperHari != null) ? hari.jumlahKasusDirawatperHari : '-' }</Text>
+                                    </View>
+                                    <View>
+                                        <Text style={styles.textDescHijau}>Pasien Sembuh : { (hari.jumlahKasusSembuhperHari != null) ? hari.jumlahKasusSembuhperHari : '-'}</Text>
+                                        <Text style={styles.textDescMerah}>Pasien Meninggal : { (hari.jumlahKasusMeninggalperHari != null) ? hari.jumlahKasusMeninggalperHari : '-'}</Text>
+                                    </View>
+                                </View>
+                            </View>
+                        )
+                    })
+                }
             </View>
         )
     }
@@ -150,6 +189,7 @@ class Indonesia extends React.Component{
 
         return(
             <PTRView onRefresh={this._refresh} style={styles.container}>
+                <Loading ref="loading"/>
                 <View style={{flex:1}}>
                     {this.renderKasusBaru()}
                     {this.renderDataProvinsi()}
@@ -194,8 +234,9 @@ const styles = StyleSheet.create({
     },
     headerKartu:{
         fontFamily: 'poppins-bold',
-        fontSize: 18,
-        color: theme.colors.putih
+        fontSize: 16,
+        color: theme.colors.putih,
+        opacity: 0.87
     },
     statusPasienD:{
         color: theme.colors.biru,

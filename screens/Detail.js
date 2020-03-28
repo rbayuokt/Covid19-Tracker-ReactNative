@@ -101,10 +101,6 @@ class Detail extends React.Component{
                     //update state loading
                     this.refs.loading.show(this.state.isLoading);
     
-                    // console.log(this.state.detail_negara);
-                    // console.log(negara);
-                    // console.log(url);
-                    // console.log(this.state.isError);
             })
             .catch(err=>{
     
@@ -116,9 +112,7 @@ class Detail extends React.Component{
     
                 //update state loading
                 this.refs.loading.show(this.state.isLoading);
-    
-                // console.log("error");
-                // console.log(this.state.isError);
+
             })
         }
         
