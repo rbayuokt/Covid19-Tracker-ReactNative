@@ -78,6 +78,16 @@ class Indonesia extends React.Component{
         
     }
 
+    renderStatus = (kasus) => {
+        if(kasus.status == "Dalam Perawatan"){
+            return <Text style={styles.statusPasienD}>{kasus.status}</Text>
+        }else if(kasus.status == "Meninggal"){
+            return <Text style={styles.statusPasienM}>{kasus.status}</Text>
+        }else if(kasus.status == "Sembuh"){
+            return <Text style={styles.statusPasienS}>{kasus.status}</Text>
+        }
+    }
+
     renderKasusBaru = () => {
         var panjang_k = this.state.kasus_baru.length;
 
@@ -97,7 +107,7 @@ class Indonesia extends React.Component{
                             <View style={styles.kartuItem}>
                                 <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
                                     <Text style={styles.headerKartu}>{kasus.klaster}</Text>
-                                    <Text style={styles.statusPasienD}>{kasus.status}</Text>
+                                    {this.renderStatus(kasus)}
                                 </View>
 
                                 <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
