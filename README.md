@@ -50,7 +50,7 @@ makasih mas untuk API nya.
 
 <br>
 if you want to rebuild this project<br>
-give the credit , cause it will make me happy :heart: :thumbsup:<br>
+give the credit , cause it will make me happy :heart:<br>
 goodluck have fun!<br><br>
 
 made with :heart: in Cimahi by [@rbayuokt](https://www.instagram.com/rbayuokt/) :thumbsup:<br>
