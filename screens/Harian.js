@@ -18,7 +18,7 @@ const format = amount => {
   };
 
 
-class Indonesia extends React.Component{
+class Harian extends React.Component{
 
     static navigationOptions = ({ route }) => ({
         title: `${route.pilneg}`,
@@ -31,8 +31,6 @@ class Indonesia extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            kasus_baru: [],
-            data_provinsi: [],
             data_harian: [],
             isError : false,
             isLoading : true,
@@ -51,116 +49,30 @@ class Indonesia extends React.Component{
         //show loading        
         this.refs.loading.show(this.state.isLoading);
 
-        //get all kasus
-        axios.get('https://indonesia-covid-19.mathdro.id/api/kasus')
-        .then(res=>{
-            const data_kasus = res.data.data.nodes;
-            this.setState({kasus_baru : data_kasus });
-        })
+         //get all data harian
+         axios.get('https://indonesia-covid-19.mathdro.id//api/harian')
+         .then(res => {
+             const harian = res.data.data;
+             this.setState({
+                 data_harian : harian, 
+                 isLoading : false});
 
-        //get all provinsi 
-        axios.get('https://indonesia-covid-19.mathdro.id/api/provinsi')
-        .then(res => {
-            const prov = res.data.data;
-            this.setState({data_provinsi : prov});
-        });
-
-        //get all data harian
-        axios.get('https://indonesia-covid-19.mathdro.id//api/harian')
-        .then(res => {
-            const harian = res.data.data;
-            this.setState({data_harian : harian, isLoading : false});
-            
-            //remove loading
             this.refs.loading.show(this.state.isLoading);
-        });
-
-        
-    }
-
-    renderKasusBaru = () => {
-        var panjang_k = this.state.kasus_baru.length;
-
-        return(
-            <View>
-                <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                    <Text style={styles.title}>Kasus Baru</Text>
-                    <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('KasusBaru')}>
-                        <Text style={{color:'#fff',marginTop:35,marginRight:theme.padding.kanan}}>detail</Text>
-                    </TouchableHighlight>
-                </View>
-
-                 {  
-                    //get 3 last data
-                    this.state.kasus_baru.slice(panjang_k-3,panjang_k).reverse().map((kasus)=>{
-                    return(
-                            <View style={styles.kartuItem}>
-                                <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
-                                    <Text style={styles.headerKartu}>{kasus.klaster}</Text>
-                                    <Text style={styles.statusPasienD}>{kasus.status}</Text>
-                                </View>
-
-                                <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
-                                    <Text style={styles.textDesc}>Umur : {kasus.umur}</Text>
-                                    <Text style={styles.textDesc}>Gender : {kasus.gender}</Text>
-                                    <Text style={styles.textDesc}>{kasus.wn}</Text>
-                                </View>
-                            </View>
-                        )
-                    }) 
-                }
-                
-            </View>
-        )
-    }
-
-    renderDataProvinsi = () => {
-        return(
-            <View style={{marginTop:20}}>
-                <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                    <Text style={styles.title}>Data Provinsi</Text>
-                    <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('Provinsi')}>
-                        <Text style={{color:'#fff',marginTop:35,marginRight:theme.padding.kanan}}>detail</Text>
-                    </TouchableHighlight>
-                </View>
-
-                {
-                    this.state.data_provinsi.slice(0,3).map((prov) => {
-
-                    return(
-                        <View style={styles.kartuItem}>
-                            <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
-                                <Text style={styles.headerKartu}>{prov.provinsi}</Text>
-                            </View>
-
-                            <View style={{flexDirection: 'row' , justifyContent:'flex-start'}}>
-                                <Text style={styles.textDescKuning}>Positif : {prov.kasusPosi}</Text>
-                                <Text style={styles.textDescHijau}>Sembuh : {prov.kasusSemb}</Text>
-                                <Text style={styles.textDescMerah}>Meninggal : {prov.kasusMeni}</Text>
-                            </View>
-                        </View>
-                    )
-                })
-            }
-
-            </View>
-        )
+        })
     }
 
     renderDataHarian = () => {
         var panjang_h = this.state.data_harian.length;
 
         return(
-            <View style={{marginTop:20,marginBottom:40}}>
+            <View style={{marginBottom:40}}>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                    <Text style={styles.title}>Update Harian</Text>
-                    <TouchableHighlight underlayColor='#1F746A' onPress={() => this.props.navigation.navigate('Harian')}>
-                        <Text style={{color:'#fff',marginTop:35,marginRight:theme.padding.kanan}}>detail</Text>
-                    </TouchableHighlight>
+                <Text style={styles.title}>Total</Text>
+                <Text style={{color:'#fff',marginTop:35,marginRight:theme.padding.kanan}}>{panjang_h + " Hari"}</Text>
                 </View>
 
                 { 
-                    this.state.data_harian.slice(panjang_h-3,panjang_h).reverse().map((hari) =>{
+                    this.state.data_harian.slice(0,panjang_h).reverse().map((hari) =>{
                         return(  
                             <View style={styles.kartuItem}>
                                 <View style={{flexDirection: 'row' , justifyContent:'space-between'}}>
@@ -185,14 +97,13 @@ class Indonesia extends React.Component{
         )
     }
 
+
     render(){
 
         return(
             <PTRView onRefresh={this._refresh} style={styles.container}>
                 <Loading ref="loading"/>
                 <View style={{flex:1}}>
-                    {this.renderKasusBaru()}
-                    {this.renderDataProvinsi()}
                     {this.renderDataHarian()}
                 </View>
             </PTRView>
@@ -268,4 +179,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Indonesia;
+export default Harian;

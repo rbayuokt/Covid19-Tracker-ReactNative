@@ -6,6 +6,9 @@ import Home from "../screens/Home";
 import Detail from "../screens/Detail";
 import Splash from "../screens/Splash";
 import Indonesia from "../screens/Indonesia";
+import KasusBaru from "../screens/KasusBaru";
+import Provinsi from "../screens/Provinsi";
+import Harian from "../screens/Harian";
 
 //import tema
 import * as theme from '../Theme';
@@ -79,6 +82,41 @@ function Corona(route) {
             }}
             />
 
+        <Stack.Screen 
+            name="KasusBaru" 
+            component={KasusBaru}
+            options={{
+                title: 'Kasus Baru Detail',
+                headerTitleAlign: 'center',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+            }}
+            />
+
+        <Stack.Screen 
+            name="Provinsi" 
+            component={Provinsi}
+            options={{
+                title: 'Data Provinsi Detail',
+                headerTitleAlign: 'center',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+            }}
+            />
+
+        <Stack.Screen 
+            name="Harian" 
+            component={Harian}
+            options={{
+                title: 'Data Harian Detail',
+                headerTitleAlign: 'center',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                },
+            }}
+            />
           
 
       </Stack.Navigator>
