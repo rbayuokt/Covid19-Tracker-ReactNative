@@ -27,11 +27,20 @@ makasih mas untuk API nya.
 **Home Screen Updated to v 1.2**<br><br>
 <img src="screenshoot/tampilan2.png" width="300px" /><br>
 
+**Result Screen :**<br><br>
+<img src="screenshoot/result.jpg" width="300px" /><br>
+
 **Indonesia Status Screen :**<br><br>
 <img src="screenshoot/Indonesia status.png" width="300px" /><br>
 
-**Result Screen :**<br><br>
-<img src="screenshoot/result.jpg" width="300px" /><br>
+**Provinsi Detail Screen :**<br><br>
+<img src="screenshoot/detail provinsi.png" width="300px" /><br>
+
+**Harian Detail Screen :**<br><br>
+<img src="screenshoot/detail harian.png" width="300px" /><br>
+
+**Kasus Detail Screen :**<br><br>
+<img src="screenshoot/detail kasus.png" width="300px" /><br>
 
 **Error Screen :**<br><br>
 <img src="screenshoot/error handle.jpg" width="300px" /><br>
