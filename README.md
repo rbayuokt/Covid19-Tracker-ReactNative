@@ -5,6 +5,7 @@ makasih mas untuk API nya.
 
 # Update info 
 -> [In my twitter](https://twitter.com/rbayuokt/status/1239904791762882561) 
+-> [Download here](https://linktr.ee/rbayuokt)
 
 # Tools
 - [x] React Native
