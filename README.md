@@ -4,7 +4,7 @@ dibuat menggunakan react native dan API yang dibuat oleh mas [@mathroid](https:/
 makasih mas untuk API nya.
 
 # Update info 
-:twitter: [In my twitter](https://twitter.com/rbayuokt/status/1239904791762882561) 
+-> [In my twitter](https://twitter.com/rbayuokt/status/1239904791762882561) 
 
 # Tools
 - [x] React Native
