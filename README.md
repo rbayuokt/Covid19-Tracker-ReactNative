@@ -4,8 +4,8 @@ dibuat menggunakan react native dan API yang dibuat oleh mas [@mathroid](https:/
 makasih mas untuk API nya.
 
 # Update info 
--> [In my twitter](https://twitter.com/rbayuokt/status/1239904791762882561) 
--> [Download here](https://linktr.ee/rbayuokt)
+:arrow_forward: [In my twitter](https://twitter.com/rbayuokt/status/1239904791762882561) <br>
+:white_check_mark: [Download here](https://linktr.ee/rbayuokt) <br>
 
 # Tools
 - [x] React Native
