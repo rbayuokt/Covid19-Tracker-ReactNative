@@ -46,8 +46,8 @@ makasih mas untuk API nya.
 <img src="screenshoot/error handle.jpg" width="300px" /><br>
 
 <br>
-if you want rebuild this project<br>
-give the credit , cause it will make me happy :love: :thumbsup:<br>
+if you want to rebuild this project<br>
+give the credit , cause it will make me happy :heart: :thumbsup:<br>
 goodluck have fun!<br><br>
 
 made with :heart: in Cimahi by [@rbayuokt](https://www.instagram.com/rbayuokt/) :thumbsup:<br>
