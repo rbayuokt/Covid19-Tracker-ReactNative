@@ -3,6 +3,8 @@ Adalah aplikasi untuk memonitoring data penyebaran virus covid-19 di seluruh dun
 dibuat menggunakan react native dan API yang dibuat oleh mas [@mathroid](https://github.com/mathdroid/covid-19-api) :thumbsup:
 makasih mas untuk API nya.
 
+Maaf codingnya belum saya buat jadi komponen dan acak"an dulu bikinnya ngebut
+
 # Update info 
 :arrow_forward: [In my twitter](https://twitter.com/rbayuokt/status/1239904791762882561) <br>
 :white_check_mark: [Download here](https://linktr.ee/rbayuokt) <br>
