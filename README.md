@@ -19,13 +19,13 @@ Maaf codingnya belum saya buat jadi komponen dan acak"an dulu bikinnya ngebut
 - [x] Load then show ( atau loading dulu baru nampil data wkwk )
 - [x] Fitur lainnya menyusul...
 
-# Library yang digunakan
+# Pustaka yang digunakan
 - [x] React Native Dropdown [link](https://www.npmjs.com/package/react-native-material-dropdown)
 - [x] WHC Loading [link](https://github.com/netyouli/react-native-whc-loading)
 - [x] Pull To Refresh
 - [x] Axios
 
-# Screenshoot 
+# Tangkapan Layar 
 
 **Splash Screen :**<br><br>
 <img src="screenshoot/splash.jpg" width="300px" /><br>
